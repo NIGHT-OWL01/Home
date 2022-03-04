@@ -1,12 +1,6 @@
 <html>
     <body>
-        home page
-        {% for contact in contacts %}
-            {{contact.name}}<br>
-            {{contact.phone_number}}<br>
-            {{contact.address}}<br>
-        {% endfor %}
-        <form method="POST" action="http://0.0.0.0:5000/app/contact">{% csrf_token %}
+        <form method="POST" action="https://helping-home.herokuapp.com/app/contact">
             <input type="submit">
         </form>
     </body>

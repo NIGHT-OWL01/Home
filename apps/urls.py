@@ -20,4 +20,5 @@ from django.urls import path
 
 urlpatterns = [
     path('contact', views.contacts),
+    path('dairy', views.dairy),
 ]
