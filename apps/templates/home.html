@@ -2,7 +2,7 @@
 
         {% block content%}
         <h1>Home Page!</h1>
-
+{{user.username}}
         {% for c in collections%}
         <div class="p-3 border bg-secondary">{{c.title}}  <a href="/"><button class="btn-sm btn-center">ADD</button></a></div>
         {%for item in c.collection_items_set.all%}
