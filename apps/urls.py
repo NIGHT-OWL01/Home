@@ -17,8 +17,11 @@ Including another URLconf
 from . import views
 from django.contrib import admin
 from django.urls import path
-
+from rest_framework.authtoken.views import obtain_auth_token
 urlpatterns = [
-    path('contact', views.contacts),
+    path('', views.home),
     path('dairy', views.dairy),
+    path('auth_user', views.user_auth),
+    path('cookies', views.cookies, name='api_token_auth'),
+    path('collections', views.collections, name='collections'),
 ]

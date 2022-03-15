@@ -8,3 +8,11 @@ class ContactAdmin(admin.ModelAdmin):
 @admin.register(Dairy)
 class DairyAdmin(admin.ModelAdmin):
     list_display=['id','price','sold']
+
+@admin.register(Collection)
+class CollectionAdmin(admin.ModelAdmin):
+    list_display=['id','user','title']
+
+@admin.register(Collection_items)
+class Collection_itemsAdmin(admin.ModelAdmin):
+    list_display=['id','name','quantity','collection']

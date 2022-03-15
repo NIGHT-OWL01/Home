@@ -1,7 +1,19 @@
-<html>
-    <body>
-        <form method="POST" action="https://helping-home.herokuapp.com/app/contact">
-            <input type="submit">
-        </form>
-    </body>
-</html>
+{% extends "base.html" %}
+
+        {% block content%}
+        <h1>Home Page!</h1>
+
+        {% for c in collections%}
+        <div class="p-3 border bg-secondary">{{c.title}}  <a href="/"><button class="btn-sm btn-center">ADD</button></a></div>
+        {%for item in c.collection_items_set.all%}
+          <div class="container">
+            <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+              <div class="col">
+                <div class="p-3 border bg-light">{{item.name}} <br>{{item.quantity}}</div>
+              </div>
+            </div>
+          </div>
+          {%endfor%}
+          {%endfor%}
+        {% endblock %}
+\
