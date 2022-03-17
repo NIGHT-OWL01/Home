@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import Collection_items, Dairy,Contact,Collection
 from django.http import HttpResponse,JsonResponse
 from .serializers import ContactSerializer, DairySerializer, UserSerializer,CollectionSerializer
@@ -15,24 +15,25 @@ from django.contrib.auth.models import User
 from apps import serializers
 # Create your views here.
 @api_view(['GET','POST'])
-def collections(request):
+def collections(request,title):
     if request.method=='GET':
-        collection_list=Collection.objects.all()
-        serializer=CollectionSerializer(collection_list,many=True)
-        return Response(serializer.data)
+        print(title)
+        ctx={'collection':title}
+        return render(request, 'collections.html',ctx)
     if request.method=='POST':
-        print('POST of collection')
-        r=request.data
-        print(request.user.id)
-        if 'token' in request.headers:
-            title=request.data['title']
-            user=request.data['user']
-            user=User.objects.get(id=user)
-            c=Collection.objects.create(title=title,user=user)
-            print(title,user)
-            return Response('user authenticated')
-        return Response('token not found')
+        print('POST of collection',title)
+        name=request.data['name']
+        quantity=request.data['quantity']
+        collection=Collection.objects.get(title=title)
+        collection_item=Collection_items.objects.create(name=name,quantity=quantity,collection=collection)
 
+        print(name,quantity,collection,collection_item)
+        return redirect('/')
+def delete_item(request,id):
+    item=Collection_items.objects.get(id=id)
+    print(item)
+    item.delete()
+    return redirect('/')
 
 def get_tokens_for_user(user):
     refresh = RefreshToken.for_user(user)
@@ -113,3 +114,4 @@ def home(request):
         print(collection_list)
         ctx={'collections':collection_list,'collection_items':collection_item_list}
         return render(request, 'home.html',ctx)
+

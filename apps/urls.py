@@ -19,9 +19,10 @@ from django.contrib import admin
 from django.urls import path
 from rest_framework.authtoken.views import obtain_auth_token
 urlpatterns = [
-    path('', views.home),
+    path('', views.home, name='home'),
     path('dairy', views.dairy),
     path('auth_user', views.user_auth),
     path('cookies', views.cookies, name='api_token_auth'),
-    path('collections', views.collections, name='collections'),
+    path('collections/<slug:title>', views.collections, name='collections'),
+    path('delete_item/<int:id>', views.delete_item, name='delete_item'),
 ]
