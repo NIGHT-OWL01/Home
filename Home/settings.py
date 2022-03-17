@@ -40,6 +40,7 @@ DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+    'django.contrib.gis',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -50,8 +51,8 @@ INSTALLED_APPS = [
     'account',
     'rest_framework',
     'corsheaders',
-    'rest_framework.authtoken',
-    'django.contrib.gis'
+    'rest_framework.authtoken'
+    
 ]
 
 MIDDLEWARE = [
