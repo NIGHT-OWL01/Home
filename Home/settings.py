@@ -9,6 +9,12 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
+import dj_database_url
+DATABASES['default'] =  dj_database_url.config()
+DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
+
+GDAL_LIBRARY_PATH = os.getenv('GDAL_LIBRARY_PATH')
+GEOS_LIBRARY_PATH = os.getenv('GEOS_LIBRARY_PATH')
 from corsheaders.defaults import default_headers
 import os
 import django_heroku
@@ -152,12 +158,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
-DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 
-GDAL_LIBRARY_PATH = os.getenv('GDAL_LIBRARY_PATH')
-GEOS_LIBRARY_PATH = os.getenv('GEOS_LIBRARY_PATH')
 STATIC_URL = '/static/'
 django_heroku.settings(locals())
 DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
