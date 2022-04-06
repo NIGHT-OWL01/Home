@@ -14,12 +14,18 @@ from django.contrib.auth.models import User
 
 from apps import serializers
 # Create your views here.
+@api_view(['GET'])
+def collection(request):
+    if request.method=='GET':
+        collections=Collection.objects.all()
+        ctx={'collections':collections}
+        return render(request, 'create_collections.html',ctx)
 @api_view(['GET','POST'])
 def collections(request,title):
     if request.method=='GET':
         print(title)
         ctx={'collection':title}
-        return render(request, 'collections.html',ctx)
+        return render(request, 'create_collections.html',ctx)
     if request.method=='POST':
         print('POST of collection',title)
         name=request.data['name']

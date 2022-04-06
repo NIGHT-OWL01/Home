@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'apps',
     'chat',
     'account',
+    'sheti',
     'django.contrib.gis',
     'rest_framework',
     'corsheaders',

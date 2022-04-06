@@ -26,6 +26,8 @@
           {% if user.is_authenticated%}
           <a class="nav-item nav-link active" href="{% url 'logout' %}">logout</a>
           <a class="nav-item nav-link active" href="{% url 'chat' %}">chat</a>
+          <a class="nav-item nav-link active" href="{% url 'collection' %}">collection</a>
+          <a class="nav-item nav-link active" href="{% url 'sheti_home' %}">Motor</a>
           {% else%}
           <a class="nav-item nav-link active" href="{% url 'register' %}">Register</a>
           <a class="nav-item nav-link active" href="{% url 'login' %}">Login</a>

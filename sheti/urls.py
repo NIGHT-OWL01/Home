@@ -15,15 +15,8 @@ Including another URLconf
 """
 
 from . import views
-from django.contrib import admin
 from django.urls import path
-from rest_framework.authtoken.views import obtain_auth_token
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('dairy', views.dairy),
-    path('auth_user', views.user_auth),
-    path('cookies', views.cookies, name='api_token_auth'),
-    path('collections/<slug:title>', views.collections, name='collections'),
-    path('collection', views.collection, name='collection'),
-    path('delete_item/<int:id>', views.delete_item, name='delete_item'),
+    path('', views.home, name='sheti_home'),
+    path('motors/', views.motors, name='motors'),
 ]

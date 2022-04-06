@@ -1,19 +1,6 @@
 {% extends "base.html" %}
 
 {% block content%}
-<h1>Home Page!</h1>
-{{user.username}}
-{% for c in collections%}
-<div class="p-3 border bg-secondary">{{c.title}}  <a href="{% url 'collections' c.title %}"><button class="btn-sm btn-center">ADD</button></a></div>
-{%for item in c.collection_items_set.all%}
-  <div class="container">
-    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-      <div class="col"> 
-        <a class="link-dark" onclick="return confirm('Delete {{item.name}} from {{c.title}}?');" href="{% url 'delete_item' item.id %}"><div class="p-3 border bg-light">{{item.name}} <br>{{item.quantity}}</div></a>
-      </div>
-    </div>
-  </div>
-  {%endfor%}
-  {%endfor%}
+<h2>Home Page</h2>
+<body bgcolor="green"></body>
 {% endblock %}
-\
