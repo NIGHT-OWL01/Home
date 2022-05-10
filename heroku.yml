@@ -1,0 +1,19 @@
+setup:
+  addons:
+    - plan: 'heroku-postgresql:hobby-dev'
+      as: DATABASE
+  config:
+    DISABLE_COLLECTSTATIC: '1'
+
+build:
+  languages:
+    - python
+  packages:
+    - gdal-bin
+
+run:
+  web: gunicorn Home.wsgi
+release:
+  image: web
+  command:
+    - python manage.py migrate

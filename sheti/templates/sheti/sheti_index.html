@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content%}
+<h2>Sheti home page</h2>
+<a href='{% url "motors"%}' class="btn btn-primary">Register</a>
+{% for motor in motors%}
+<br>
+
+<div class="card w-75">
+  <div class="card-body">
+    <h5 class="card-title">{{motor.name}}</h5>
+    <p class="card-text">name : {{motor.name}}<br>
+        Address : {{motor.address}}<br>
+        status : {% if motor.active%}   active  {%else%}    not-active  {% endif %}<br>
+        owner : {{motor.owner}}
+
+    </p>
+    <a href='{% url "motor_update" motor.id%}' class="btn btn-primary">Button</a>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}

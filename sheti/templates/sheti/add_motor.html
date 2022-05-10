@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content%}
+<h2>Motor registeration</h2>
+
+<form method="POST">{% csrf_token %}
+    Name : <input name="name" placeholder="Motor name"><br>
+    Address:<input name="address" placeholder="Motor location address"><br>
+    active : <input type="checkbox" name="active" placeholder="Motor name"><br>
+    <input type="submit" value="Register">
+</form>
+
+
+{% endblock %}

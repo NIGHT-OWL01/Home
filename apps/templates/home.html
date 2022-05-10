@@ -1,13 +1,6 @@
-<html>
-    <body>
-        home page
-        {% for contact in contacts %}
-            {{contact.name}}<br>
-            {{contact.phone_number}}<br>
-            {{contact.address}}<br>
-        {% endfor %}
-        <form method="POST" action="http://0.0.0.0:5000/app/contact">{% csrf_token %}
-            <input type="submit">
-        </form>
-    </body>
-</html>
+{% extends "base.html" %}
+
+{% block content%}
+<h2>Home Page</h2>
+<body bgcolor="green"></body>
+{% endblock %}
