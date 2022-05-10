@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content%}
+<h1>Collection Page!</h1>
+<h2>Add Items</h2>
+{{user.username}}
+
+<div class="container border">
+{% if collection %}
+{{collection}}
+{% else %}
+<select>
+{% for collection in collections %}
+<option value={{collection}}>{{collection}}</option>
+{% endfor %}
+</select>
+{% endif %}
+<form action="" method="post">
+Item_name: <input type="text" name="name">
+Quantity: <input type="text" name="quantity">
+<input type="submit" value="Add">
+</form>
+</div>
+{% endblock %}
