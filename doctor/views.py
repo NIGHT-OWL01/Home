@@ -6,7 +6,7 @@ from .models import Doctor, Speciality
 from .serializers import DoctorSerializer
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from rest_framework.response import Response
-from django.contrib.gis.geoip2 import GeoIP2
+#from django.contrib.gis.geoip2 import GeoIP2
 # Create your views here.
 
 def welcome(request):
