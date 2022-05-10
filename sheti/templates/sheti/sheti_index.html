@@ -15,7 +15,7 @@
         owner : {{motor.owner}}
 
     </p>
-    <a href="#" class="btn btn-primary">Button</a>
+    <a href='{% url "motor_update" motor.id%}' class="btn btn-primary">Button</a>
   </div>
 </div>
 {% endfor %}

@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
 from .models import Motor
+from django.views.generic.edit import UpdateView
 # Create your views here.
 
 def home(request):
@@ -22,3 +23,8 @@ def motors(request):
         motor.save()
         print(name,address,active)
         return redirect('sheti_home')
+
+class MotorUpdateView(UpdateView):
+    model = Motor
+    fields = ['owner']
+    template_name= 'sheti/update_motor.html'
