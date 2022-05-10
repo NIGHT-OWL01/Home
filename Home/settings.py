@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework.authtoken',
     'doctor',
-    'django_user_agents'
     
 ]
 
