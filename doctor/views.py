@@ -1,7 +1,7 @@
 from django.contrib.gis.geos import Point, GEOSGeometry
 from django.contrib.gis.db.models.functions import Distance
 from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import Doctor, Speciality
 from .serializers import DoctorSerializer
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -10,18 +10,24 @@ from rest_framework.response import Response
 # Create your views here.
 
 def welcome(request):
-    return HttpResponse("Welcome to docs")
+    if request.method=='GET':
+        return render(request, 'doctor/index.html')
+    if request.method=='POST':
+        return redirect('doctor_search',city='pune')
+    
 
 def doctor_registrater(request):
-    return HttpResponse("Welcome to register")
-
+    return HttpResponse("Welcome to reg")
 def doctor_search(request):
     latitude = float(request.GET.get('lat', '0'))
     longitude = float(request.GET.get('long', '0'))
+    city = request.GET.get('city', '0')
     user_location = Point(longitude, latitude, srid=4326)
 
-    doctor_list=Doctor.objects.annotate(distance=Distance("location", user_location)).order_by("distance")
-    
+    if latitude !=0 and longitude !='0':
+        doctor_list=Doctor.objects.annotate(distance=Distance("location", user_location)).order_by("distance")
+    else:
+        doctor_list=Doctor.objects.filter(city__contains=city)
     context={'doctor_list':doctor_list}
     return render(request,'doctor/doctor_search.html',context)
 

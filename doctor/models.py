@@ -13,5 +13,6 @@ class Doctor(models.Model):
     experience=models.CharField(max_length=100,blank=True,null=True)
     location=models.PointField()
     address=models.CharField(max_length=100, blank=True, null=True)
+    city=models.CharField(max_length=100, blank=True, null=True)
     speciality=models.ForeignKey(Speciality, on_delete=models.DO_NOTHING,null=True)
 
