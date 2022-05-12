@@ -19,7 +19,7 @@ def collection(request):
     if request.method=='GET':
         collections=Collection.objects.all()
         ctx={'collections':collections}
-        return render(request, 'create_collections.html',ctx)
+        return render(request, 'collections.html',ctx)
 @api_view(['GET','POST'])
 def collections(request,title):
     if request.method=='GET':

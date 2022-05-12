@@ -27,7 +27,7 @@ def doctor_search(request):
     if latitude !=0 and longitude !='0':
         doctor_list=Doctor.objects.annotate(distance=Distance("location", user_location)).order_by("distance")
     else:
-        doctor_list=Doctor.objects.filter(city__contains=city)
+        doctor_list=Doctor.objects.filter(city__icontains=city)
     context={'doctor_list':doctor_list}
     return render(request,'doctor/doctor_search.html',context)
 
