@@ -30,7 +30,15 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">{{doctor.name}}</h5>
-              <p class="card-text">{{doctor.speciality}}</p>
+              <p class="card-text">Experience : {{doctor.experience}}</p>
+              {% if doctor.education is None %}
+              <p class="card-text">Education : Not mentioned</p>
+              {% else %}
+              <p class="card-text">Education : {{doctor.education}}</p>
+              {% endif %}
+              <p class="card-text"> Address : {{doctor.address}}</p>
+              <p class="card-text"> City : {{doctor.city}}</p>
+              <p class="card-text"> Speciality : {{doctor.speciality}}</p>
               <a href="#" class="btn btn-primary" onclick="alert('Appointment booked with Doctor : {{doctor.name}}')">Get Appointment</a>
             </div>
           </div>

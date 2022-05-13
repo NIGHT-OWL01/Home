@@ -11,7 +11,8 @@ class Speciality(models.Model):
 class Doctor(models.Model):
     name=models.CharField(max_length=100)
     experience=models.CharField(max_length=100,blank=True,null=True)
-    location=models.PointField()
+    education=models.CharField(max_length=100,blank=True,null=True)
+    location=models.PointField(blank=True,null=True)
     address=models.CharField(max_length=100, blank=True, null=True)
     city=models.CharField(max_length=100, blank=True, null=True)
     speciality=models.ForeignKey(Speciality, on_delete=models.DO_NOTHING,null=True)
