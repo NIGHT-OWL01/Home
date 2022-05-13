@@ -28,7 +28,7 @@ def doctor_search(request):
         doctor_list=Doctor.objects.annotate(distance=Distance("location", user_location)).order_by("distance")
     else:
         doctor_list=Doctor.objects.filter(city__icontains=city)
-    context={'doctor_list':doctor_list}
+    context={'doctor_list':doctor_list,'city_name_passed':city}
     return render(request,'doctor/doctor_search.html',context)
 
 
